@@ -1,2 +1,1 @@
-# pay-api-tutoring
-# lydia-be
+# Tutor API
