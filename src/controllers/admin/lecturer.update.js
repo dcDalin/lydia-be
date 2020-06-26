@@ -1,5 +1,5 @@
 import Lecturer from "../../db/models/lecturer.model";
-import { FAILURE, SUCCESS } from "../status";
+import { ERROR, SUCCESS } from "../status";
 
 const LecturerUpdate = async (req, res) => {
   try {
@@ -8,7 +8,7 @@ const LecturerUpdate = async (req, res) => {
     const result = await Lecturer.findByPk(id);
     if (!result) {
       return res.json({
-        status: FAILURE,
+        status: ERROR,
         message: `Lecturer with id ${id} not found`,
       });
     }
@@ -31,13 +31,13 @@ const LecturerUpdate = async (req, res) => {
     }
 
     return res.json({
-      status: FAILURE,
+      status: ERROR,
       message: `Could not update lecturer details`,
     });
   } catch (error) {
     console.log("Error is: ", error);
     return res.json({
-      status: FAILURE,
+      status: ERROR,
       message: "An unknown error occured, please try again",
     });
   }

@@ -1,3 +1,3 @@
-export const SUCCESS = "SUCCESS";
-export const WARNING = "WARNING";
-export const FAILURE = "FAILURE";
+export const SUCCESS = "success";
+export const WARNING = "warning";
+export const ERROR = "error";

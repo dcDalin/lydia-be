@@ -1,6 +1,6 @@
 import { Op } from "sequelize";
 import Lecturer from "../../db/models/lecturer.model";
-import { FAILURE, SUCCESS } from "../status";
+import { ERROR, SUCCESS } from "../status";
 
 const LecturerView = async (req, res) => {
   try {
@@ -48,7 +48,7 @@ const LecturerView = async (req, res) => {
   } catch (error) {
     console.log("Error is: ", error);
     return res.json({
-      status: FAILURE,
+      status: ERROR,
       message: "An unknown error occured, please try again",
     });
   }

@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import Admin from "../../db/models/admin.model";
 import generateToken from "../helpers/generateToken";
-import { SUCCESS, FAILURE } from "../status";
+import { SUCCESS, ERROR } from "../status";
 
 const Login = async (req, res) => {
   const { email, password } = req.body;
@@ -12,7 +12,7 @@ const Login = async (req, res) => {
 
   if (!admin) {
     return res.json({
-      status: FAILURE,
+      status: ERROR,
       message: "Email not found",
     });
   }
@@ -21,7 +21,7 @@ const Login = async (req, res) => {
 
   if (!match) {
     return res.json({
-      status: FAILURE,
+      status: ERROR,
       message: "Wrong password",
     });
   }
@@ -30,7 +30,8 @@ const Login = async (req, res) => {
 
   return res.json({
     status: SUCCESS,
-    message: token,
+    message: "Login successful",
+    token,
   });
 };
 

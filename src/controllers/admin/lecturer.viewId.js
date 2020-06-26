@@ -1,5 +1,5 @@
 import Lecturer from "../../db/models/lecturer.model";
-import { FAILURE, SUCCESS } from "../status";
+import { ERROR, SUCCESS } from "../status";
 
 const LecturerViewId = async (req, res) => {
   try {
@@ -7,14 +7,14 @@ const LecturerViewId = async (req, res) => {
 
     if (!id) {
       return res.json({
-        status: FAILURE,
+        status: ERROR,
         message: "No id provided",
       });
     } else {
       const result = await Lecturer.findByPk(id);
       if (!result) {
         return res.json({
-          status: FAILURE,
+          status: ERROR,
           message: `Lecturer with id ${id} not found`,
         });
       }
@@ -26,7 +26,7 @@ const LecturerViewId = async (req, res) => {
   } catch (error) {
     console.log("Error is: ", error);
     return res.json({
-      status: FAILURE,
+      status: ERROR,
       message: "An unknown error occured, please try again",
     });
   }

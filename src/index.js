@@ -33,6 +33,6 @@ const port = process.env.PORT;
       console.log(`App running on port ${port}`);
     });
   } catch (err) {
-    console.log("Error is: ", error);
+    console.log("Error is: ", err);
   }
 })();

@@ -1,7 +1,7 @@
 import generator from "generate-password";
 import bcrypt from "bcryptjs";
 import Lecturer from "../../db/models/lecturer.model";
-import { FAILURE, SUCCESS } from "../status";
+import { ERROR, SUCCESS } from "../status";
 
 const LecturerNew = async (req, res) => {
   try {
@@ -14,7 +14,7 @@ const LecturerNew = async (req, res) => {
 
     if (lecturer) {
       return res.json({
-        status: FAILURE,
+        status: ERROR,
         message: "Lecturer email already exists",
       });
     }
@@ -42,7 +42,7 @@ const LecturerNew = async (req, res) => {
   } catch (error) {
     console.log("Error is: ", error);
     return res.json({
-      status: FAILURE,
+      status: ERROR,
       message: "An unknown error occured, please try again",
     });
   }
